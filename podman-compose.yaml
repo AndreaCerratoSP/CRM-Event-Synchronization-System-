@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  rabbitmq:
+    image: docker.io/library/rabbitmq:3-management
+    container_name: crm-rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+
+  postgres:
+    image: docker.io/library/postgres:15
+    container_name: crm-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=crm_db
+      - POSTGRES_USER=crm_user
+      - POSTGRES_PASSWORD=crm_password
+
+  ingestion-api:
+    image: ingestion-api:latest
+    container_name: crm-ingestion-api
+    build:
+      context: ./ingestion-api
+    ports:
+      - "8081:8081"
+    environment:
+      - SPRING_RABBITMQ_HOST=rabbitmq
+      - CRM_API_KEY=secure-crm-api-key-string
+      - JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF-8 -Duser.language=it -Duser.country=IT
+    depends_on:
+      - rabbitmq
+
+  event-worker:
+    image: event-worker:latest
+    container_name: crm-event-worker
+    build:
+      context: ./event-worker
+    ports:
+      - "8082:8082"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/crm_db
+      - SPRING_DATASOURCE_USERNAME=crm_user
+      - SPRING_DATASOURCE_PASSWORD=crm_password
+      - SPRING_RABBITMQ_HOST=rabbitmq
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF-8 -Duser.language=it -Duser.country=IT
+    depends_on:
+      - postgres
+      - rabbitmq

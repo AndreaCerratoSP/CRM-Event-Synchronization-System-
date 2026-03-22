@@ -1,0 +1,17 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: ingestion-api
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+# Configurazione API Key custom per autenticazione CRM
+crm:
+  api:
+    key: "secure-crm-api-key-string"
+    crm-campaigns-queue: "secure-crm-api-key-string"

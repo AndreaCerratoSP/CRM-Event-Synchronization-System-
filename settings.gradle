@@ -1,0 +1,3 @@
+rootProject.name = 'crm-sync-parent'
+include 'ingestion-api'
+include 'event-worker'
