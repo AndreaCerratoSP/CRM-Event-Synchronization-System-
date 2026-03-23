@@ -14,4 +14,4 @@ spring:
 crm:
   api:
     key: "secure-crm-api-key-string"
-    crm-campaigns-queue: "secure-crm-api-key-string"
+    crm-campaigns-queue: "crm.campaigns.queue"

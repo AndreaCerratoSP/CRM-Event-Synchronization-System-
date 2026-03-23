@@ -15,8 +15,8 @@ import org.springframework.context.annotation.Configuration;
 @Slf4j
 public class RabbitMQConfig {
 
-	@Value("${crm.api.key}")
-    public static String crmCampaignsQueue;
+	@Value("${crm.api.crm-campaigns-queue}")
+    private String crmCampaignsQueue;
 
 	/**
 	 * Defines a RabbitMQ queue for CRM campaigns.

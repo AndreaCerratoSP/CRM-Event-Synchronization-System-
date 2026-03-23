@@ -34,17 +34,25 @@ public class SyncServiceImpl implements SyncService {
     @Transactional
     public void synchronizeCampaign(CampaignMessage campaignMessage) {
         if (campaignMessage == null || campaignMessage.getCampaignId() == null) {
-        	log.warn("Received null campaign or campaign with null ID, skipping synchronization");
-        	return;
+            log.warn("Received null campaign or campaign with null ID, skipping synchronization");
+            return;
+        }
+
+        // Cerchiamo se la campagna esiste già
+        Campaign campaign = campaignRepository.findById(campaignMessage.getCampaignId())
+                .orElse(new Campaign());
+        
+        if (campaign.getId() == null) {
+            campaign.setId(campaignMessage.getCampaignId());
+            log.debug("Creating new campaign with ID: {}", campaign.getId());
+        } else {
+            log.debug("Updating existing campaign with ID: {}", campaign.getId());
         }
         
-        Campaign campaign = new Campaign();
-        campaign.setId(campaignMessage.getCampaignId());
-        campaign.setSubCampaignId(campaignMessage.getSubCampaignId());        
-        log.debug("Processing campaign message: {}", campaign.toString());
+        campaign.setSubCampaignId(campaignMessage.getSubCampaignId());
 
         if (campaignMessage.getAttendees() != null) {
-            campaign.setAttendees(campaignMessage.getAttendees().stream().map(dto -> {
+            java.util.List<Attendee> newAttendees = campaignMessage.getAttendees().stream().map(dto -> {
                 Attendee attendee = new Attendee();
                 attendee.setCn(dto.getCn());
                 attendee.setFirstName(dto.getFirstName());
@@ -53,20 +61,18 @@ public class SyncServiceImpl implements SyncService {
                 attendee.setPartnerId(dto.getPartnerId());
                 attendee.setIsCompanion(dto.getIsCompanion());
                 attendee.setQrCode(dto.getQrCode());
+                attendee.setCampaign(campaign);
                 return attendee;
-            }).collect(Collectors.toList()));
-            
-            log.debug("Mapped {} attendees for campaign ID: {}", campaign.getAttendees().size(), campaign.getId());
-        }
+            }).collect(Collectors.toList());
 
-        // Se la campagna esiste già, orphanRemoval = true e cascade = ALL 
-        // faranno sì che la nuova lista di iscritti sovrascriva quella vecchia
-        // rimuovendo automaticamente i record non più presenti.
-        
-        // Per PostgreSQL, è necessario associare l'entità Campaign a ciascun Attendee
-        // prima di salvare, poiché il mapping è bidirezionale (mappedBy).
-        if (campaign.getAttendees() != null) {
-            campaign.getAttendees().forEach(attendee -> attendee.setCampaign(campaign));
+            if (campaign.getAttendees() == null) {
+                campaign.setAttendees(new java.util.ArrayList<>());
+            }
+
+            campaign.getAttendees().clear();
+            campaign.getAttendees().addAll(newAttendees);
+            
+            log.debug("Mapped and updated {} attendees for campaign ID: {}", campaign.getAttendees().size(), campaign.getId());
         }
 
         log.debug("Synchronizing campaign with ID: {}", campaign.getId());

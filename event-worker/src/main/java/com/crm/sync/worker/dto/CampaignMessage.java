@@ -1,6 +1,5 @@
 package com.crm.sync.worker.dto;
 
-import com.crm.sync.worker.dto.AttendeeDto;
 import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;

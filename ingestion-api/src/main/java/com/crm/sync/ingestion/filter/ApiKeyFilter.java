@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -23,7 +25,9 @@ import java.util.Collections;
 public class ApiKeyFilter extends OncePerRequestFilter {
 
     @Value("${crm.api.key}")
-    private String configuredApiKey;
+    private String configuredApiKeyHash;
+
+    private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     /**
 	 * Filters incoming HTTP requests to validate the presence and correctness of the API key.
@@ -42,7 +46,7 @@ public class ApiKeyFilter extends OncePerRequestFilter {
     	
         String requestApiKey = request.getHeader("X-API-KEY");
 
-        if (requestApiKey == null || !requestApiKey.equals(configuredApiKey)) {
+        if (requestApiKey == null || !passwordEncoder.matches(requestApiKey, configuredApiKeyHash)) {
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             response.getWriter().write("Unauthorized: Invalid or missing API Key");
             log.warn("Unauthorized access attempt with API key: {}", requestApiKey);

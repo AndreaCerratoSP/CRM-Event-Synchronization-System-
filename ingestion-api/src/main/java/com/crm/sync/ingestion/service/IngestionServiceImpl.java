@@ -22,7 +22,7 @@ import java.util.List;
 public class IngestionServiceImpl implements IngestionService {
 
     @Value("${crm.api.crm-campaigns-queue}")
-    public String crmCampaignsQueue;
+    private String crmCampaignsQueue;
 
     private final RabbitTemplate rabbitTemplate;
 

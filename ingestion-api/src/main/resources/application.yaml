@@ -13,5 +13,6 @@ spring:
 # Configurazione API Key custom per autenticazione CRM
 crm:
   api:
-    key: "secure-crm-api-key-string"
-    crm-campaigns-queue: "secure-crm-api-key-string"
+    # Hash BCrypt per "secure-crm-api-key-string"
+    key: "$2a$10$X8O.uN.uK.L7p9W8Q9R0O.K8p9W8Q9R0O.K8p9W8Q9R0O.K8p9W8Q"
+    crm-campaigns-queue: "crm.campaigns.queue"

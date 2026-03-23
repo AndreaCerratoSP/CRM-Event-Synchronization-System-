@@ -21,3 +21,8 @@ spring:
     properties:
       hibernate:
         format_sql: true
+
+# Configurazione API Key custom per autenticazione CRM
+crm:
+  api:
+    crm-campaigns-queue: "crm.campaigns.queue"

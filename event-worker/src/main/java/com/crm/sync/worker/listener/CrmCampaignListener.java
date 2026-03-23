@@ -30,7 +30,7 @@ public class CrmCampaignListener {
 	 *
 	 * @param campaignMessage the incoming campaign message to be processed
 	 */
-    @RabbitListener(queues = "crm.campaigns.queue")
+    @RabbitListener(queues = "${crm.api.crm-campaigns-queue}")
     public void onCampaignMessageReceived(CampaignMessage campaignMessage) {
         if (campaignMessage == null) {
         	log.warn("Received null campaign message, skipping processing");
