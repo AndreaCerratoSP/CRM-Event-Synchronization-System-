@@ -14,7 +14,9 @@ DROP TABLE IF EXISTS crm_sync.campaign;
 -- Create table campaign 
 CREATE TABLE crm_sync.campaign ( 
 	 id VARCHAR(100) NOT NULL, 
-	 sub_campaign_id VARCHAR(100) 
+	 sub_campaign_id VARCHAR(100),
+	 creation_date TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+	 last_update_date TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP
  ); 
  
  ALTER TABLE crm_sync.campaign ADD CONSTRAINT campaign_pk PRIMARY KEY (id); 
@@ -30,7 +32,9 @@ CREATE TABLE crm_sync.campaign (
  	 partner_id VARCHAR(100) NOT NULL, 
  	 is_companion BOOLEAN NOT NULL, 
  	 qr_code VARCHAR(255) NOT NULL, 
- 	 campaign_id VARCHAR(100) NOT NULL 
+ 	 campaign_id VARCHAR(100) NOT NULL,
+	 creation_date TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+	 last_update_date TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP
  ); 
  
  ALTER TABLE crm_sync.attendee ADD CONSTRAINT attendee_pk PRIMARY KEY (id); 

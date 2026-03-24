@@ -21,8 +21,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Slf4j
 public class SecurityConfig {
 
-	@Autowired
-    private ApiKeyFilter apiKeyFilter;
+    private final ApiKeyFilter apiKeyFilter;
     
     /**
 	 * Configures the security filter chain for the application.

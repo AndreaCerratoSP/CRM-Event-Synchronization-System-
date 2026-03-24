@@ -9,8 +9,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -25,9 +23,7 @@ import java.util.Collections;
 public class ApiKeyFilter extends OncePerRequestFilter {
 
     @Value("${crm.api.key}")
-    private String configuredApiKeyHash;
-
-    private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    private String configuredApiKey;
 
     /**
 	 * Filters incoming HTTP requests to validate the presence and correctness of the API key.
@@ -45,14 +41,27 @@ public class ApiKeyFilter extends OncePerRequestFilter {
             throws ServletException, IOException {
     	
         String requestApiKey = request.getHeader("X-API-KEY");
+        if (requestApiKey == null) {
+            requestApiKey = request.getHeader("x-api-key");
+        }
+        
+        log.debug("Received API Key header: {}", requestApiKey != null ? "Present" : "Missing");
 
-        if (requestApiKey == null || !passwordEncoder.matches(requestApiKey, configuredApiKeyHash)) {
+        if (requestApiKey == null) {
+            log.warn("Missing API Key header");
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            response.getWriter().write("Unauthorized: Invalid or missing API Key");
-            log.warn("Unauthorized access attempt with API key: {}", requestApiKey);
+            response.getWriter().write("Unauthorized: Missing API Key header");
             return;
         }
 
+        if (!configuredApiKey.equals(requestApiKey.trim())) {
+            log.warn("Invalid API Key provided");
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            response.getWriter().write("Unauthorized: Invalid API Key");
+            return;
+        }
+
+        log.info("Authentication successful for API Key");
         PreAuthenticatedAuthenticationToken authentication = new PreAuthenticatedAuthenticationToken("CRM", null, Collections.emptyList());
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
