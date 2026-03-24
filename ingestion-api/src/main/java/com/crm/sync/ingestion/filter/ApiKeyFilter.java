@@ -6,8 +6,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -23,7 +23,18 @@ import java.util.Collections;
 public class ApiKeyFilter extends OncePerRequestFilter {
 
     @Value("${crm.api.key}")
-    private String configuredApiKey;
+    private String storedHash;
+
+    private final PasswordEncoder passwordEncoder;
+
+    /**
+     * Constructor injection for PasswordEncoder.
+     *
+     * @param passwordEncoder the BCrypt password encoder
+     */
+    public ApiKeyFilter(PasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
+    }
 
     /**
 	 * Filters incoming HTTP requests to validate the presence and correctness of the API key.
@@ -54,7 +65,9 @@ public class ApiKeyFilter extends OncePerRequestFilter {
             return;
         }
 
-        if (!configuredApiKey.equals(requestApiKey.trim())) {
+        // inputPassword è il valore in chiaro (requestApiKey), mentre storedHash è il valore cifrato
+        // Lasciamo fare il match all'encoder come richiesto
+        if (!passwordEncoder.matches(requestApiKey.trim(), storedHash)) {
             log.warn("Invalid API Key provided");
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             response.getWriter().write("Unauthorized: Invalid API Key");
