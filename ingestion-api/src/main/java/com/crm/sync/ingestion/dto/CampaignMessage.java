@@ -4,7 +4,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -13,7 +12,7 @@ import java.util.List;
 @Data
 @Builder
 @ToString
-public class CampaignMessage implements Serializable {
+public class CampaignMessage {
     private String campaignId;
     private String subCampaignId;
     private List<AttendeeDto> attendees;

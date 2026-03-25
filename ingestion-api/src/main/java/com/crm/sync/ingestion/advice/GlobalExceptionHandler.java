@@ -18,31 +18,28 @@ import com.crm.sync.ingestion.dto.MessageResponseDTO;
 @Slf4j
 public class GlobalExceptionHandler {
 
-	/////////////
-	//// 500 ////
-	/////////////
+
+	// 500 //
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<MessageResponseDTO> handleAllExceptions(Exception ex) throws Exception {
-    	log.info("GlobalExceptionHandler - handleAllExceptions: "+ex.getMessage());    	
+    public ResponseEntity<MessageResponseDTO> handleAllExceptions(Exception ex) {
+    	log.info("Generic Exception: "+ex.getMessage());
         return buildErrorResponse(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
-    
-	/////////////
-	//// 400 ////
-	/////////////
+
+	// 400 //
 	@ExceptionHandler({ BadRequestException.class,
 		                HttpMessageNotReadableException.class,
 		                MissingServletRequestParameterException.class,
 		                MethodArgumentTypeMismatchException.class,
 			            ConstraintViolationException.class})
-    public ResponseEntity<MessageResponseDTO> handleBadRequestException(Exception ex) throws Exception {
-		log.info("GlobalExceptionHandler - BadRequestException: "+ex.getMessage());		
+    public ResponseEntity<MessageResponseDTO> handleBadRequestException(Exception ex) {
+		log.info("Bad Request: "+ex.getMessage());
         return buildErrorResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 	
-	private ResponseEntity<MessageResponseDTO> buildErrorResponse(String message, HttpStatus status) throws Exception {
+	private ResponseEntity<MessageResponseDTO> buildErrorResponse(String message, HttpStatus status) {
 		MessageResponseDTO response = new MessageResponseDTO(message);
-		return new ResponseEntity<MessageResponseDTO>(response, status);
+		return new ResponseEntity<>(response, status);
 	}
 
 }

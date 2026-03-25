@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
@@ -15,7 +16,7 @@ import java.time.LocalDate;
 @Data
 @Builder
 @ToString
-public class AttendeeDto {
+public class AttendeeDto implements Serializable {
     private String cn; // Nullable
     
     @NotBlank

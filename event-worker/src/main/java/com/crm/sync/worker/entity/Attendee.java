@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.ToString;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 /**
  * Entity representing an attendee of a campaign.
@@ -41,21 +40,4 @@ public class Attendee {
     @ManyToOne
     @JoinColumn(name = "campaign_id")
     private Campaign campaign;
-
-    @Column(name = "creation_date", updatable = false)
-    private LocalDateTime creationDate;
-
-    @Column(name = "last_update_date")
-    private LocalDateTime lastUpdateDate;
-
-    @PrePersist
-    protected void onCreate() {
-        creationDate = LocalDateTime.now();
-        lastUpdateDate = LocalDateTime.now();
-    }
-
-    @PreUpdate
-    protected void onUpdate() {
-        lastUpdateDate = LocalDateTime.now();
-    }
 }
