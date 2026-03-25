@@ -34,7 +34,7 @@ public class Attendee {
     @Column(nullable = false)
     private Boolean isCompanion;
     
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String qrCode;
     
     @ManyToOne

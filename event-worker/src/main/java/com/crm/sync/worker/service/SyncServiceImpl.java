@@ -50,32 +50,31 @@ public class SyncServiceImpl implements SyncService {
 
         // Try to retrieve the Campaign from the database using the ID from the message.
         // If it does not exist, create a new Campaign instance.
-        Campaign campaign = campaignRepository.findByIdWithAttendees(campaignMessage.getCampaignId());
-        if(campaign == null)
-            campaign = new Campaign();
+        Campaign campaign = campaignRepository.findByCampaignId(campaignMessage.getCampaignId());
 
-        if(campaign.getAttendees() == null)
-            log.info("attendees null");
+        if(campaign == null) {
+            campaign = new Campaign();
+            log.info("New campaign ");
+        }
         else
-            log.info("attendees size "+campaign.getAttendees().size());
+            log.info("Update campaign with id {}", campaign.getCampaignId());
 
         // Set the values from the incoming message.
-        campaign.setCampagnId(campaignMessage.getCampaignId());
+        campaign.setCampaignId(campaignMessage.getCampaignId());
         campaign.setSubCampaignId(campaignMessage.getSubCampaignId());
 
         List<Attendee> newAttendees = attendeeMapper.toEntity(campaignMessage.getAttendees());
-
         log.info("{} new attendees found in message", newAttendees != null ? newAttendees.size() : 0);
 
         // Remove deleted attendees
-        campaign.removeAttendees(newAttendees);
+        campaign.clearAttendees();
 
         // Add the new Attendees to Campaign
         campaign.addAttendees(newAttendees);
 
         // Save the Camapign
         campaignRepository.save(campaign);
-        log.info("Successfully synchronized campaign with ID: {}", campaign.getCampagnId());
+        log.info("Successfully synchronized campaign with ID: {}", campaign.getCampaignId());
     }
 
 }

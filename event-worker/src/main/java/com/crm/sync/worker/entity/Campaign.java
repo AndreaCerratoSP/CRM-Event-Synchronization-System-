@@ -7,9 +7,6 @@ import lombok.ToString;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 /**
  * Entity representing a campaign, which may have multiple attendees.
@@ -20,8 +17,10 @@ import java.util.stream.Collectors;
 @ToString(exclude = "attendees")
 public class Campaign {
     @Id
-    private String campagnId; // campaignId
-    
+    @Column(name = "campaign_id")
+    private String campaignId;
+
+    @Column(name = "sub_campaign_id")
     private String subCampaignId; // Nullable
 
     @Column(name = "creation_date", updatable = false)
@@ -59,59 +58,18 @@ public class Campaign {
         }
     }
 
-    public void removeAttendees(List<Attendee> newAttendees) {
-        if(newAttendees == null)
-            newAttendees = new ArrayList<>();
+    public void clearAttendees() {
+        if(attendees != null) {
+            new ArrayList<>(attendees).forEach(this::removeAttendee);
+        }
+    }
 
-        if (attendees != null){
-            Map<String, Attendee> updatedMap = newAttendees.stream()
-                    .collect(Collectors.toMap(Attendee::getQrCode, Function.identity()));
-
-            for (Attendee att : attendees) {
-                Attendee attendee = updatedMap.get(att.getQrCode());
-                if (attendee == null)
-                    removeAttendee(att);
+    public void addAttendees(List<Attendee> attendees) {
+        if(attendees != null) {
+            for (Attendee att : new ArrayList<>(attendees)) {
+                addAttendee(att);
             }
         }
     }
 
-    public void addAttendees(List<Attendee> newAttendees) {
-        List<Attendee> updatedAttendees = new ArrayList<>();
-
-        if (newAttendees != null){
-            if(attendees == null)
-                attendees = new ArrayList<>();
-
-            Map<String, Attendee> existingMap = attendees.stream()
-                    .collect(Collectors.toMap(Attendee::getQrCode, Function.identity()));
-
-            for (Attendee att : newAttendees) {
-                Attendee attendee = existingMap.get(att.getQrCode());
-                if (attendee != null) {
-                    // update valuew
-                    merge(att, attendee);
-                    updatedAttendees.add(attendee);
-                    existingMap.remove(att.getQrCode());
-                } else {
-                    // new attendee
-                    Attendee newAttendee = new Attendee();
-                    newAttendee.setQrCode(att.getQrCode());
-                    merge(att, newAttendee);
-                    newAttendee.setCampaign(this);
-                    updatedAttendees.add(newAttendee);
-                }
-            }
-        }
-
-        this.setAttendees(updatedAttendees);
-    }
-
-    private void merge(Attendee source, Attendee dest){
-        dest.setCn(source.getCn());
-        dest.setFirstName(source.getFirstName());
-        dest.setLastName(source.getLastName());
-        dest.setBirthDate(source.getBirthDate());
-        dest.setPartnerId(source.getPartnerId());
-        dest.setIsCompanion(source.getIsCompanion());
-    }
 }

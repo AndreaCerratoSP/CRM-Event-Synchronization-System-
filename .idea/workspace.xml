@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0ef48245-fdfb-4a86-846a-133e8be1de5c" name="Changes" comment="Api Key removed from code and using only secret">
-      <change afterPath="$PROJECT_DIR$/event-worker/src/main/java/com/crm/sync/worker/mapper/AttendeeMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.5/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.5/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.5/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/checksums/sha1-checksums.bin" afterDir="false" />
+    <list default="true" id="0ef48245-fdfb-4a86-846a-133e8be1de5c" name="Changes" comment="Almost finshed testing">
       <change beforePath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.bin" afterDir="false" />
@@ -16,55 +12,25 @@
       <change beforePath="$PROJECT_DIR$/.gradle/8.5/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/libs/crm-sync-parent-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/crm-sync-parent-0.0.1-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-worker/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/event-worker/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-worker/build/classes/java/main/com/crm/sync/worker/dto/AttendeeDto$AttendeeDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/event-worker/build/classes/java/main/com/crm/sync/worker/dto/AttendeeDto$AttendeeDtoBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-worker/build/classes/java/main/com/crm/sync/worker/dto/AttendeeDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/event-worker/build/classes/java/main/com/crm/sync/worker/dto/AttendeeDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-worker/build/classes/java/main/com/crm/sync/worker/dto/CampaignMessage$CampaignMessageBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/event-worker/build/classes/java/main/com/crm/sync/worker/dto/CampaignMessage$CampaignMessageBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-worker/build/classes/java/main/com/crm/sync/worker/dto/CampaignMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/event-worker/build/classes/java/main/com/crm/sync/worker/dto/CampaignMessage.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/event-worker/build/classes/java/main/com/crm/sync/worker/entity/Attendee.class" beforeDir="false" afterPath="$PROJECT_DIR$/event-worker/build/classes/java/main/com/crm/sync/worker/entity/Attendee.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/event-worker/build/classes/java/main/com/crm/sync/worker/entity/Campaign.class" beforeDir="false" afterPath="$PROJECT_DIR$/event-worker/build/classes/java/main/com/crm/sync/worker/entity/Campaign.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-worker/build/classes/java/main/com/crm/sync/worker/listener/CrmCampaignListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/event-worker/build/classes/java/main/com/crm/sync/worker/listener/CrmCampaignListener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/event-worker/build/classes/java/main/com/crm/sync/worker/repository/CampaignRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/event-worker/build/classes/java/main/com/crm/sync/worker/repository/CampaignRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-worker/build/classes/java/main/com/crm/sync/worker/service/SyncService.class" beforeDir="false" afterPath="$PROJECT_DIR$/event-worker/build/classes/java/main/com/crm/sync/worker/service/SyncService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/event-worker/build/classes/java/main/com/crm/sync/worker/service/SyncServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/event-worker/build/classes/java/main/com/crm/sync/worker/service/SyncServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/event-worker/build/libs/event-worker-0.0.1-SNAPSHOT-plain.jar" beforeDir="false" afterPath="$PROJECT_DIR$/event-worker/build/libs/event-worker-0.0.1-SNAPSHOT-plain.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/event-worker/build/libs/event-worker.jar" beforeDir="false" afterPath="$PROJECT_DIR$/event-worker/build/libs/event-worker.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/event-worker/build/resources/main/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/event-worker/build/resources/main/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-worker/build/tmp/bootJar/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/event-worker/build/tmp/bootJar/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-worker/build/resources/main/logback-spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/event-worker/build/resources/main/logback-spring.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/event-worker/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/event-worker/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-worker/src/main/java/com/crm/sync/worker/dto/AttendeeDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-worker/src/main/java/com/crm/sync/worker/dto/AttendeeDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-worker/src/main/java/com/crm/sync/worker/dto/CampaignMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-worker/src/main/java/com/crm/sync/worker/dto/CampaignMessage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/event-worker/src/main/java/com/crm/sync/worker/entity/Attendee.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-worker/src/main/java/com/crm/sync/worker/entity/Attendee.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/event-worker/src/main/java/com/crm/sync/worker/entity/Campaign.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-worker/src/main/java/com/crm/sync/worker/entity/Campaign.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-worker/src/main/java/com/crm/sync/worker/listener/CrmCampaignListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-worker/src/main/java/com/crm/sync/worker/listener/CrmCampaignListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/event-worker/src/main/java/com/crm/sync/worker/repository/CampaignRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-worker/src/main/java/com/crm/sync/worker/repository/CampaignRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-worker/src/main/java/com/crm/sync/worker/service/SyncService.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-worker/src/main/java/com/crm/sync/worker/service/SyncService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/event-worker/src/main/java/com/crm/sync/worker/service/SyncServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-worker/src/main/java/com/crm/sync/worker/service/SyncServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/event-worker/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/event-worker/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ingestion-api/build/classes/java/main/com/crm/sync/ingestion/advice/GlobalExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/ingestion-api/build/classes/java/main/com/crm/sync/ingestion/advice/GlobalExceptionHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ingestion-api/build/classes/java/main/com/crm/sync/ingestion/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/ingestion-api/build/classes/java/main/com/crm/sync/ingestion/config/SecurityConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ingestion-api/build/classes/java/main/com/crm/sync/ingestion/controller/CrmController.class" beforeDir="false" afterPath="$PROJECT_DIR$/ingestion-api/build/classes/java/main/com/crm/sync/ingestion/controller/CrmController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ingestion-api/build/classes/java/main/com/crm/sync/ingestion/dto/AttendeeDto$AttendeeDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/ingestion-api/build/classes/java/main/com/crm/sync/ingestion/dto/AttendeeDto$AttendeeDtoBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ingestion-api/build/classes/java/main/com/crm/sync/ingestion/dto/AttendeeDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/ingestion-api/build/classes/java/main/com/crm/sync/ingestion/dto/AttendeeDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ingestion-api/build/classes/java/main/com/crm/sync/ingestion/dto/CampaignMessage$CampaignMessageBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/ingestion-api/build/classes/java/main/com/crm/sync/ingestion/dto/CampaignMessage$CampaignMessageBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ingestion-api/build/classes/java/main/com/crm/sync/ingestion/dto/CampaignMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/ingestion-api/build/classes/java/main/com/crm/sync/ingestion/dto/CampaignMessage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ingestion-api/build/classes/java/main/com/crm/sync/ingestion/filter/ApiKeyFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/ingestion-api/build/classes/java/main/com/crm/sync/ingestion/filter/ApiKeyFilter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ingestion-api/build/classes/java/main/com/crm/sync/ingestion/service/IngestionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/ingestion-api/build/classes/java/main/com/crm/sync/ingestion/service/IngestionService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ingestion-api/build/classes/java/main/com/crm/sync/ingestion/service/IngestionServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/ingestion-api/build/classes/java/main/com/crm/sync/ingestion/service/IngestionServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ingestion-api/build/libs/ingestion-api-0.0.1-SNAPSHOT-plain.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ingestion-api/build/libs/ingestion-api.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ingestion-api/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ingestion-api/src/main/java/com/crm/sync/ingestion/advice/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/ingestion-api/src/main/java/com/crm/sync/ingestion/advice/GlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ingestion-api/src/main/java/com/crm/sync/ingestion/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/ingestion-api/src/main/java/com/crm/sync/ingestion/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ingestion-api/src/main/java/com/crm/sync/ingestion/controller/CrmController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ingestion-api/src/main/java/com/crm/sync/ingestion/controller/CrmController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ingestion-api/src/main/java/com/crm/sync/ingestion/dto/AttendeeDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/ingestion-api/src/main/java/com/crm/sync/ingestion/dto/AttendeeDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ingestion-api/src/main/java/com/crm/sync/ingestion/dto/CampaignMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/ingestion-api/src/main/java/com/crm/sync/ingestion/dto/CampaignMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ingestion-api/src/main/java/com/crm/sync/ingestion/service/IngestionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ingestion-api/src/main/java/com/crm/sync/ingestion/service/IngestionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ingestion-api/src/main/java/com/crm/sync/ingestion/service/IngestionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ingestion-api/src/main/java/com/crm/sync/ingestion/service/IngestionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-worker/src/main/resources/logback-spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/event-worker/src/main/resources/logback-spring.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ingestion-api/build/libs/ingestion-api-0.0.1-SNAPSHOT-plain.jar" beforeDir="false" afterPath="$PROJECT_DIR$/ingestion-api/build/libs/ingestion-api-0.0.1-SNAPSHOT-plain.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ingestion-api/build/libs/ingestion-api.jar" beforeDir="false" afterPath="$PROJECT_DIR$/ingestion-api/build/libs/ingestion-api.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/init-db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/init-db.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -131,23 +97,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.CRM [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.CRM [clean build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.CRM-Event-Synchronization-System- [:ingestion-api:com.crm.sync.ingestion.util.ApiKeyGenerator.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.CRM.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Download Sources.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/progetti/CRM-Event-Synchronization-System-&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.CRM [build].executor": "Run",
+    "Gradle.CRM [clean build].executor": "Run",
+    "Gradle.CRM-Event-Synchronization-System- [:ingestion-api:com.crm.sync.ingestion.util.ApiKeyGenerator.main()].executor": "Run",
+    "Gradle.CRM.executor": "Run",
+    "Gradle.Download Sources.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/progetti/CRM-Event-Synchronization-System-",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="gradle build" />
@@ -260,7 +227,15 @@
       <option name="project" value="LOCAL" />
       <updated>1774364054173</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Almost finshed testing">
+      <option name="closed" value="true" />
+      <created>1774455940603</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1774455940603</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -279,6 +254,7 @@
     <MESSAGE value="Updated ingestion-api, all tested for ingestion-api, added crypted rabbit and apikey in event worker" />
     <MESSAGE value="Event worker finished and tested" />
     <MESSAGE value="Api Key removed from code and using only secret" />
-    <option name="LAST_COMMIT_MESSAGE" value="Api Key removed from code and using only secret" />
+    <MESSAGE value="Almost finshed testing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Almost finshed testing" />
   </component>
 </project>
